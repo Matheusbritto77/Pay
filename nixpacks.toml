@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["php83", "nodejs", "bun", "php83Packages.composer"]
+nixPkgs = ["php84", "nodejs", "bun", "php84Packages.composer"]
 
 [phases.install]
 cmds = [
