@@ -53,6 +53,18 @@ class DevServe extends Command
             $this->warn('  ⚠ WhatsApp server not found, skipping.');
         }
 
+        // 3. Start Queue Worker
+        $this->startBgProcess('queue', [
+            PHP_BINARY, 'artisan', 'queue:work', '--tries=3',
+        ], base_path(), '🟠');
+
+        // 4. Start Vite (NPM Dev)
+        if (file_exists(base_path('package.json'))) {
+            $this->startBgProcess('vite', [
+                'npm', 'run', 'dev',
+            ], base_path(), '⚡');
+        }
+
         // 3. Start PHP built-in server directly
         $serverFile = file_exists(base_path('server.php'))
             ? base_path('server.php')
