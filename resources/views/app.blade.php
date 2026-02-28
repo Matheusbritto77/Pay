@@ -13,11 +13,11 @@
 
     <!-- Scripts -->
     <script>
-        window.reverbConfig = {
-            key: "{{ config('reverb.apps.apps.0.key') ?: env('REVERB_APP_KEY') }}",
-            host: "{{ env('REVERB_HOST') }}",
-            port: "{{ env('REVERB_PORT', 80) }}",
-            scheme: "{{ env('REVERB_SCHEME', 'https') }}"
+        ow.reverbConfig = {
+                 config('reverb.apps.apps.0.key') ?: env('REVERB_APP_KEY') }}",
+                    v('REVERB_HOST') }}",
+                        ->environment('production') || env('AP            duction') ? 443 : env('REVERB_PORT', 80) }}",
+        sch (app()->eent('production') || env('APP_ENV') === 'production') ? 'https' : env('REVERB_SCHEME', 'https') }}"
         };
     </script>
     @routes
